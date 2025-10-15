@@ -1,2 +1,4 @@
-data class Tarea (val nombre:String){
+package com.example.listadetareasapp
+
+data class Tarea(val nombre: String){
 }
