@@ -1,6 +1,7 @@
 package com.example.listadetareasapp
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -33,11 +34,19 @@ class MainActivity : AppCompatActivity() {
 
 		)
 
-		// 3. Creamos una instancia de nuestro adaptador y le pasamos la lista de datos
+		val adapter = TareaAdapter(listaDeTareas) { tarea ->
+			// Este bloque de código se ejecutará cuando se pulse una fila.
+			// La 'tarea' pulsada nos llega como parámetro.
 
-		val adapter=TareaAdapter(listaDeTareas)
+			// 1. Creamos un Intent para ir de MainActivity a DetailActivity
+			val intent = Intent(this, DetailActivity::class.java)
 
-		// 4. Conectamos el RecyclerView con nuestro adaptador y le decimos cómo mostrar los elementos
+			// 2. Añadimos datos extra al Intent (el nombre de la tarea)
+			intent.putExtra("NOMBRE_TAREA", tarea.nombre)
+
+			// 3. Iniciamos la nueva Activity
+			startActivity(intent)
+		}
 		recyclerView.adapter=adapter
 		recyclerView.layoutManager=LinearLayoutManager(this)
 
