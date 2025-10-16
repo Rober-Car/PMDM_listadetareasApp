@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 		)
 
+		//  CREACIÓN DEL ADAPTADOR
 		val adapter = TareaAdapter(listaDeTareas) { tarea ->
 			// Este bloque de código se ejecutará cuando se pulse una fila.
 			// La 'tarea' pulsada nos llega como parámetro.
@@ -49,7 +50,12 @@ class MainActivity : AppCompatActivity() {
 		}
 		recyclerView.adapter=adapter
 		recyclerView.layoutManager=LinearLayoutManager(this)
-
+		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_layout)) { v, insets ->
+			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+			v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+			insets
+		}
 
 		}
+
 	}

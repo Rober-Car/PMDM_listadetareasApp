@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:text="Lo que sea"
         android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"/>
 
 </LinearLayout>
